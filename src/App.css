@@ -1,38 +1,244 @@
-.App {
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Body */
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Main Container */
+.main_containar {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  min-height: 10vh;
+  background: linear-gradient(135deg, #cfdef3);
+}
+
+/* Left Section */
+.main_left {
+  flex: 1;
+  max-width: 400px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main_left h2 {
   text-align: center;
+  margin-bottom: 20px;
+  color: #555;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input[type='text'] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+input[type='text']:focus {
+  border-color: #4c9aff;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4c9aff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #357ab7;
+}
+
+/* Right Section */
+.main_right {
+  flex: 1;
+  margin-left: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Unit Card */
+.unit_container {
+  width: 230px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.unit_container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.unit_container img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.unit_container h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.unit_container p {
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+.unit_container span {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .main_containar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main_left {
+    margin-bottom: 20px;
+  }
+
+  .main_right {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .unit_container {
+    width: 200px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media (max-width: 480px) {
+  input[type='text'] {
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}
+
+
+/* Header */
+
+.header_container{
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 100px;
+  background-color: rgb(255,238,238);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_container nav{
+  position: relative;
+}
+
+.header_container nav ul{
+  position: absolute;
+  top: -22px;
+  right: -20px;
+  padding: 20px;
+  height: 100vh;
+  background-color: rgb(255,154,154);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
+  gap: 20px;
+  transition: all 400ms ease-in;
 }
 
-.App-link {
-  color: #61dafb;
+.header_container nav ol{
+  display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.header_container .header__menuClose{
+  cursor: pointer;
+}
+
+.header_container .header__menu{
+  margin: 50px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+
+
+.header_container nav ul li {
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 400ms ease-in;
+}
+
+.header_container nav ul li:hover{
+  color: red;
+}
+
+@media only screen and (min-width: 768px){
+  .header_container nav ul, 
+  .header_container nav .header__menuClick {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header_container nav ol{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .header_container nav ol li{
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 400ms ease-in;
+  }
+
+  .header_container nav ol li:hover{
+    color: red;
   }
 }
+
+
+
